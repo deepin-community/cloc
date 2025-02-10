@@ -5,13 +5,13 @@
 * * *
 cloc counts blank lines, comment lines, and physical lines of source code in many programming languages.
 
-Latest release:  v1.98 (Aug. 19, 2023)
+Latest release:  v2.02 (Aug. 2, 2024)
 
-<a href="https://github.com/AlDanial/cloc/graphs/contributors" alt="Contributors">
-    <img src="https://img.shields.io/github/contributors/AlDanial/cloc" /></a>
-<a href="https://zenodo.org/badge/latestdoi/42029482">
-    <img src="https://zenodo.org/badge/42029482.svg" alt="DOI"></a>
-<img src="https://img.shields.io/github/downloads/AlDanial/cloc/total.svg">
+[![Version](https://img.shields.io/badge/version-2.02-blue.svg)](https://github.com/AlDanial/cloc)
+[![Contributors](https://img.shields.io/github/contributors/AlDanial/cloc.svg)](https://github.com/AlDanial/cloc/graphs/contributors)
+[![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.42029482.svg)](https://doi.org/10.5281/zenodo.42029482)
+[![Forks](https://img.shields.io/github/forks/AlDanial/cloc.svg)](https://github.com/AlDanial/cloc/network/members)
+[![Downloads](https://img.shields.io/github/downloads/AlDanial/cloc/total.svg)]()
 
 cloc moved to GitHub in September 2015 after being hosted
 at http://cloc.sourceforge.net/ since August 2006.
@@ -42,6 +42,7 @@ at http://cloc.sourceforge.net/ since August 2006.
     *   [git and UTF8 pathnames](#git-and-UTF8-pathnames-)
     *   [Third Generation Language Scale Factors](#third-generation-language-scale-factors-)
     *   [options.txt configuration file](#optionstxt-configuration-file-)
+    *   [Java Programmatic Interface](#java-programmatic-interface-)
 *   [Complex regular subexpression recursion limit ](#complex-regular-subexpression-recursion-limit-)
 *   [Limitations](#limitations-)
 *   [Requesting Support for Additional Languages](#requesting-support-for-additional-languages-)
@@ -64,8 +65,8 @@ Step 3:  Invoke cloc to count your source files, directories, archives,
 or git commits.
 The executable name differs depending on whether you use the
 development source version (`cloc`), source for a
-released version (`cloc-1.98.pl`) or a Windows executable
-(`cloc-1.98.exe`).
+released version (`cloc-2.02.pl`) or a Windows executable
+(`cloc-2.02.exe`).
 
 On this page, `cloc` is the generic term
 used to refer to any of these.
@@ -130,27 +131,28 @@ This example uses code from
 <a href=https://pypi.python.org/pypi/pudb>PuDB</a>, a fantastic Python debugger.
 
 <pre>
-prompt> git clone http://git.tiker.net/trees/pudb.git
+prompt> git clone https://github.com/inducer/pudb.git
 
 prompt> cd pudb
 
 prompt> cloc 6be804e07a5db
       48 text files.
-      48 unique files.
-      15 files ignored.
+      41 unique files.                              
+       8 files ignored.
 
-github.com/AlDanial/cloc v 1.73  T=0.15 s (223.1 files/s, 46159.0 lines/s)
+github.com/AlDanial/cloc v 1.99  T=0.04 s (1054.9 files/s, 189646.8 lines/s)
 -------------------------------------------------------------------------------
 Language                     files          blank        comment           code
 -------------------------------------------------------------------------------
 Python                          28           1519            728           4659
+reStructuredText                 6            102             20            203
 YAML                             2              9              2             75
 Bourne Shell                     3              6              0             17
+Text                             1              0              0             11
 make                             1              4              6             10
 -------------------------------------------------------------------------------
-SUM:                            34           1538            736           4761
+SUM:                            41           1640            756           4975
 -------------------------------------------------------------------------------
-
 </pre>
 
 **each subdirectory of a particular directory**
@@ -286,6 +288,7 @@ a Perl interpreter):
     sudo pkg install cloc            # FreeBSD
     sudo port install cloc           # macOS with MacPorts
     brew install cloc                # macOS with Homebrew
+    winget install AlDanial.Cloc     # Windows with winget
     choco install cloc               # Windows with Chocolatey
     scoop install cloc               # Windows with Scoop
 
@@ -321,7 +324,7 @@ cloc has many features that make it easy to use, thorough, extensible, and porta
 1.  Exists as a single, self-contained file that requires minimal installation effort---just download the file and run it.
 2.  Can read language comment definitions from a file and thus potentially work with computer languages that do not yet exist.
 3.  Allows results from multiple runs to be summed together by language and by project.
-4.  Can produce results in a variety of formats: plain text, SQL, JSON, XML, YAML, comma separated values.
+4.  Can produce results in a variety of formats: plain text, Markdown, SQL, JSON, XML, YAML, comma separated values.
 5.  Can count code within compressed archives (tar balls, Zip files, Java .ear files).
 6.  Has numerous troubleshooting options.
 7.  Handles file and directory names with spaces and other unusual characters.
@@ -407,14 +410,14 @@ C:> cpan -i Regexp::Common
 C:> cpan -i Algorithm::Diff
 C:> cpan -i PAR::Packer
 C:> cpan -i Win32::LongPath
-C:> pp -M Win32::LongPath -M Encode::Unicode -M Digest::MD5 -c -x -o cloc-1.98.exe cloc-1.98.pl
+C:> pp -M Win32::LongPath -M Encode::Unicode -M Digest::MD5 -c -x -o cloc-2.02.exe cloc-2.02.pl
 </pre>
 
 A variation on the instructions above is if you installed the portable
 version of Strawberry Perl, you will need to run `portableshell.bat` first
 to properly set up your environment.
 
-The Windows executable in the Releases section, <tt>cloc-1.98.exe</tt>,
+The Windows executable in the Releases section, <tt>cloc-2.02.exe</tt>,
 was built on a 64 bit Windows 10 computer using
 [Strawberry Perl](http://strawberryperl.com/)
 5.30.2 and
@@ -435,6 +438,12 @@ You are encouraged to run your own virus scanners against the
 executable and also check sites such
 https://www.virustotal.com/ .
 The entries for recent versions are:
+
+cloc-2.02.exe:
+https://www.virustotal.com/gui/file/369ed76125f7399cd582d169adf39a2e08ae5066031fea0cc8b2836ea50e7ce2?nocache=1
+
+cloc-2.00.exe:
+https://www.virustotal.com/gui/file/7a234ef0cb495de1b5776acf88c5554e2bab1fb02725a5fb85756a6db3121c1f
 
 cloc-1.98.exe:
 https://www.virustotal.com/gui/file/88615d193ec8c06f7ceec3cc1d661088af997798d87ddff331d9e9f9128a6782?nocache=1
@@ -673,7 +682,7 @@ Usage: cloc [options] &lt;file(s)/dir(s)/git hash(es)&gt; | &lt;set 1&gt; &lt;se
                              Fortran 90 counter (which expects files to
                              end with .f90) instead of the default Fortran 77
                              counter, use
-                               --force-lang="Fortran 90",f
+                               --force-lang="Fortran 90,f"
                              If &lt;ext&gt; is omitted, every file will be counted
                              with the &lt;lang&gt; counter.  This option can be
                              specified multiple times (but that is only
@@ -833,6 +842,8 @@ Usage: cloc [options] &lt;file(s)/dir(s)/git hash(es)&gt; | &lt;set 1&gt; &lt;se
                              See also --unix, --show-os.
 
  Filter Options
+   --include-content=&lt;regex&gt; Only count files containing text that matches the
+                             given regular expression.
    --exclude-content=&lt;regex&gt; Exclude files containing text that matches the given
                              regular expression.
    --exclude-dir=&lt;D1&gt;[,D2,]  Exclude the given comma separated directories
@@ -1019,17 +1030,22 @@ Ada                        (ada, adb, ads, pad)
 ADSO/IDSM                  (adso)
 Agda                       (agda, lagda)
 AMPLE                      (ample, dofile, startup)
+AnsProlog                  (lp)
 Ant                        (build.xml, build.xml)
 ANTLR Grammar              (g, g4)
 Apex Class                 (cls)
 Apex Trigger               (trigger)
 APL                        (apl, apla, aplc, aplf, apli, apln, aplo, dyalog, dyapp, mipage)
-Arduino Sketch             (ino, pde)
+AppleScript                (applescript)
+Arduino Sketch             (ino)
+ArkTs                      (ets)
+Arturo                     (art)
 AsciiDoc                   (adoc, asciidoc)
 ASP                        (asa, ashx, asp, axd)
 ASP.NET                    (asax, ascx, asmx, aspx, master, sitemap, webinfo)
 AspectJ                    (aj)
 Assembly                   (a51, asm, nasm, S, s)
+Astro                      (astro)
 Asymptote                  (asy)
 AutoHotkey                 (ahk, ahkl)
 awk                        (auk, awk, gawk, mawk, nawk)
@@ -1074,6 +1090,7 @@ Cucumber                   (feature)
 CUDA                       (cu, cuh)
 Cython                     (pxd, pxi, pyx)
 D                          (d)
+Dafny                      (dfy)
 DAL                        (da)
 Dart                       (dart)
 Delphi Form                (dfm)
@@ -1116,8 +1133,10 @@ GDScript                   (gd)
 Gencat NLS                 (msg)
 Glade                      (glade, ui)
 Gleam                      (gleam)
+Glimmer JavaScript         (gjs)
+Glimmer TypeScript         (gts)
 GLSL                       (comp, fp, frag, frg, fsh, fshader, geo, geom, glsl, glslv, gshader, tesc, tese, vert, vrx, vsh, vshader)
-Go                         (go)
+Go                         (go, ʕ◔ϖ◔ʔ)
 Godot Resource             (tres)
 Godot Scene                (tscn)
 Godot Shaders              (gdshader)
@@ -1145,11 +1164,12 @@ INI                        (buildozer.spec, editorconfig, ini, lektorproject, pr
 InstallShield              (ism)
 IPL                        (ipl)
 Jai                        (jai)
+Janet                      (janet)
 Java                       (java)
 JavaScript                 (_js, bones, cjs, es6, jake, jakefile, js, jsb, jscad, jsfl, jsm, jss, mjs, njs, pac, sjs, ssjs, xsjs, xsjslib)
 JavaServer Faces           (jsf)
 JCL                        (jcl)
-Jinja Template             (jinja, jinja2)
+Jinja Template             (j2, jinja, jinja2)
 JSON                       (arcconfig, avsc, composer.lock, geojson, gltf, har, htmlhintrc, json, json-tmlanguage, jsonl, mcmeta, mcmod.info, tern-config, tern-project, tfstate, tfstate.backup, topojson, watchmanconfig, webapp, webmanifest, yyp)
 JSON5                      (json5)
 JSP                        (jsp, jspf)
@@ -1175,6 +1195,7 @@ LLVM IR                    (ll)
 Logos                      (x, xm)
 Logtalk                    (lgt, logtalk)
 Lua                        (lua, nse, p8, pd_lua, rbxs, wlua)
+Luau                       (luau)
 m4                         (ac, m4)
 make                       (am, Gnumakefile, gnumakefile, Makefile, makefile, mk)
 Mako                       (mako, mao)
@@ -1184,8 +1205,10 @@ MATLAB                     (m)
 Maven                      (pom, pom.xml)
 Meson                      (meson.build)
 Metal                      (metal)
+Modelica                   (mo)
 Modula3                    (i3, ig, m3, mg)
-Mojo                       (mojom)
+Mojo                       (mojo, 🔥)
+Mojom                      (mojom)
 MSBuild script             (btproj, csproj, msbuild, vcproj, wdproj, wixproj)
 MUMPS                      (mps, m)
 Mustache                   (mustache)
@@ -1194,6 +1217,7 @@ NAnt script                (build)
 NASTRAN DMAP               (dmap)
 Nemerle                    (n)
 NetLogo                    (nlogo, nls)
+Nickel                     (ncl)
 Nim                        (nim, nim.cfg, nimble, nimrod, nims)
 Nix                        (nix)
 Nunjucks                   (njk)
@@ -1207,28 +1231,33 @@ Oracle Forms               (fmt)
 Oracle PL/SQL              (bod, fnc, prc, spc, trg)
 Oracle Reports             (rex)
 P4                         (p4)
-Pascal                     (dpr, lpr, p, pas, pascal)
+Pascal                     (dpr, lpr, pas, pascal)
+Pascal/Pawn                (p)
 Pascal/Puppet              (pp)
 Patran Command Language    (pcl, ses)
+Pawn                       (pawn, pwn)
 PEG                        (peg)
 peg.js                     (pegjs)
 peggy                      (peggy)
 Perl                       (ack, al, cpanfile, makefile.pl, perl, ph, plh, plx, pm, psgi, rexfile, pl, p6)
 Pest                       (pest)
 PHP                        (aw, ctp, phakefile, php, php3, php4, php5, php_cs, php_cs.dist, phps, phpt, phtml)
-PHP/Pascal                 (inc)
+PHP/Pascal/Fortran/Pawn    (inc)
 Pig Latin                  (pig)
 PL/I                       (pl1)
 PL/M                       (lit, plm)
-PlantUML                   (puml)
+PlantUML                   (iuml, plantuml, pu, puml, wsd)
 PO File                    (po)
 Pony                       (pony)
 PowerBuilder               (pbt, sra, srf, srm, srs, sru, srw)
 PowerShell                 (ps1, psd1, psm1)
+Prisma Schema              (prisma)
+Processing                 (pde)
 ProGuard                   (pro)
 Prolog                     (P, prolog, yap, pl, p6, pro)
 Properties                 (properties)
 Protocol Buffers           (proto)
+PRQL                       (prql)
 Pug                        (jade, pug)
 PureScript                 (purs)
 Python                     (buck, build.bazel, gclient, gyp, gypi, lmi, py, py3, pyde, pyi, pyp, pyt, pyw, sconscript, sconstruct, snakefile, tac, workspace, wscript, wsgi, xpy)
@@ -1264,8 +1293,10 @@ SKILL                      (il)
 SKILL++                    (ils)
 Slice                      (ice)
 Slim                       (slim)
+Slint                      (slint)
 Smalltalk                  (st, cs)
 Smarty                     (smarty, tpl)
+Snakemake                  (rules, smk)
 Softbridge Basic           (SBL, sbl)
 Solidity                   (sol)
 SparForte                  (sp)
@@ -1288,17 +1319,19 @@ Tcl/Tk                     (itk, tcl, tk)
 TEAL                       (teal)
 Teamcenter met             (met)
 Teamcenter mth             (mth)
+Templ                      (templ)
 TeX                        (aux, bbx, bib, bst, cbx, dtx, ins, lbx, ltx, mkii, mkiv, mkvi, sty, tex, cls)
 Text                       (text, txt)
 Thrift                     (thrift)
 TITAN Project File Information (tpd)
 Titanium Style Sheet       (tss)
+TLA+                       (tla)
 TNSDL                      (cii, cin, in1, in2, in3, in4, inf, interface, rou, sdl, sdt, spd, ssc, sst)
 TOML                       (toml)
 tspeg                      (jspeg, tspeg)
 TTCN                       (ttcn, ttcn2, ttcn3, ttcnpp)
 Twig                       (twig)
-TypeScript                 (tsx, ts)
+TypeScript                 (mts, tsx, ts)
 Typst                      (typ)
 Umka                       (um)
 Unity-Prefab               (mat, prefab)
@@ -1317,6 +1350,7 @@ Visual Studio Solution     (sln)
 Visualforce Component      (component)
 Visualforce Page           (page)
 Vuejs Component            (vue)
+Vyper                      (vy)
 Web Services Description   (wsdl)
 WebAssembly                (wast, wat)
 WGSL                       (wgsl)
@@ -1341,6 +1375,7 @@ XSLT                       (XSL, xsl, XSLT, xslt)
 Xtend                      (xtend)
 yacc                       (y, yacc)
 YAML                       (clang-format, clang-tidy, gemrc, glide.lock, mir, reek, rviz, sublime-syntax, syntax, yaml, yaml-tmlanguage, yml, yml.mysql)
+Yang                       (yang)
 Zig                        (zig)
 zsh                        (zsh)
 </pre>
@@ -2190,29 +2225,37 @@ A database created from cloc SQL output has two tables,
 
 Table **metadata**:
 
-|Field     | Type |
-|----------|------|
-|timestamp | text |
-|project   | text |
-|elapsed_s | text |
+|Field     | Type                |
+|----------|---------------------|
+|id        | integer primary key |
+|timestamp | text                |
+|project   | text                |
+|elapsed_s | text                |
 
 Table **t**:
 
-|Field       | Type   |
-|------------|--------|
-| project    |text    |
-| language   |text    |
-| file       |text    |
-| nBlank     |integer |
-| nComment   |integer |
-| nCode      |integer |
-| nScaled    |real    |
+|Field             | Type                     |
+|------------------|--------------------------|
+| project          |text                      |
+| language         |text                      |
+| file             |text                      |
+| nBlank           |integer                   |
+| nComment         |integer                   |
+| nCode            |integer                   |
+| nScaled          |real                      |
+| foreign key (id) | references metadata (id) |
 
 The **metadata** table contains information about when the cloc run
-was made.  The `--sql-append` switch allows one to combine
+was made.  Run time is stored two ways: as Unix epoch
+seconds in `id` and as an ISO 8601 formatted text string
+in the local time zone
+(for example `2024-03-01 14:19:41`) in `timestamp`.
+The `--sql-append` switch allows one to combine
 many runs in a single database; each run adds a
 row to the metadata table.
 The code count information resides in table **t**.
+The `id` key makes it easy to associate a run's code count with
+its metadata.
 
 Let's repeat the code count examples of Perl, Python, SQLite, MySQL and
 PostgreSQL tarballs shown in the
@@ -2807,7 +2850,25 @@ cloc will look for this file in the following default locations:
 /home/USERNAME/.config/cloc/options.txt
 
 # Windows
-C:\Users\USERNAME\AppData\cloc\options.txt
+C:\Users\USERNAME\AppData\Roaming\cloc
+</pre>
+
+If you run cloc with ``--help``, cloc will tell you
+where it expects to find this config file file.  The information
+appears by the explanation of the ``--config`` switch after
+the text ``the default location of``.
+On Unix-like operating systems, this can be simplifed to
+
+<pre>
+&gt; cloc --help | grep "default location"
+             the default location of /home/al/.config/cloc/options.txt.
+</pre>
+
+and in a Windows ``cmd`` terminal with
+
+<pre>
+&gt; cloc --help | findstr default | findstr location
+             the default location of C:\Users\al\AppData\Roaming\cloc
 </pre>
 
 Place each switch and arguments, if any, on a line by itself.
@@ -2837,6 +2898,14 @@ from that location:
 
 Run with ``--verbose`` to have cloc tell you which, if
 any, ``options.txt`` file it uses.
+
+[](1}}})
+<a name="Java Programmatic Interface"></a> []({{{1)
+##  [Java Programmatic Interface &#9650;](#___top "click to go to top of document")
+
+[Ozren Dabić](https://github.com/seart-group/jcloc/commits?author=dabico)
+created a Java programmatic interface to cloc.
+It is available at https://github.com/seart-group/jcloc
 
 [](1}}})
 <a name="complex_regex_recursion"></a> []({{{1)
@@ -2937,6 +3006,9 @@ from the Windows Subsystem for Linux (WSL).
 <li> cloc's comment match code uses regular expressions
 which cannot properly account for nested comments using
 the same comment markers (such as <tt>/*  /*  */  */</tt>).
+</li>
+<li> XML comments embedded within <tt>CDATA</tt> blocks are counted as
+comments rather than code.
 </li>
 </ol>
 
