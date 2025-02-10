@@ -1,9 +1,40 @@
 Description: disable tests that interact with a git repo
 Forwarded: not-needed
+Author: tony mancill <tmancill@debian.org>
 
 --- a/Unix/t/01_opts.t
 +++ b/Unix/t/01_opts.t
-@@ -84,42 +84,42 @@
+@@ -66,60 +66,60 @@
+                    'args' => '--by-file --fullpath --not-match-d bar/bee issues/114',
+                    'ref'  => '../tests/outputs/issues/114/T7.yaml',
+                },
+-             # {
+-             #     'name' => 'git submodule handling (github issue #131 T1)',
+-             #     'cd'   => '../tests/inputs',
+-             #     'args' => 'issues/131',
+-             #     'ref'  => '../tests/outputs/issues/131/T1.yaml',
+-             # },
+-             # {
+-             #     'name' => 'git submodule handling (github issue #131 T2)',
+-             #     'cd'   => '../tests/inputs',
+-             #     'args' => '--vcs git issues/131',
+-             #     'ref'  => '../tests/outputs/issues/131/T2.yaml',
+-             # },
++               #{
++               #    'name' => 'git submodule handling (github issue #131 T1)',
++               #    'cd'   => '../tests/inputs',
++               #    'args' => 'issues/131',
++               #    'ref'  => '../tests/outputs/issues/131/T1.yaml',
++               #},
++               #{
++               #    'name' => 'git submodule handling (github issue #131 T2)',
++               #    'cd'   => '../tests/inputs',
++               #    'args' => '--vcs git issues/131',
++               #    'ref'  => '../tests/outputs/issues/131/T2.yaml',
++               #},
+                {
+                    'name' => 'all files (github issue #132 T1)',
+                    'cd'   => '../tests/inputs',
                     'args' => 'issues/132',
                     'ref'  => '../tests/outputs/issues/132/T1.yaml',
                 },
@@ -82,9 +113,85 @@ Forwarded: not-needed
                 {
                     'name' => '--read-lang-def w/remove_between_general (github issue #166)',
                     'cd'   => '../tests/inputs/issues/166',
+@@ -802,12 +802,12 @@
+                    'ref'  => '../tests/outputs/issues/822/T1.yaml',
+                 },
+ 
+-                {
+-                   'name' => '--fullpath issues/822 (github issue #822 T2)',
+-                   'cd'   => '../tests/inputs',
+-                   'args' => '--vcs git --fullpath --not-match-f "^c.csv" issues/822',
+-                   'ref'  => '../tests/outputs/issues/822/T2.yaml',
+-                },
++                #{
++                #   'name' => '--fullpath issues/822 (github issue #822 T2)',
++                #   'cd'   => '../tests/inputs',
++                #   'args' => '--vcs git --fullpath --not-match-f "^c.csv" issues/822',
++                #   'ref'  => '../tests/outputs/issues/822/T2.yaml',
++                #},
+ 
+                 {
+                    'name' => '--fullpath issues/822 (github issue #822 T3)',
+@@ -816,12 +816,12 @@
+                    'ref'  => '../tests/outputs/issues/822/T3.yaml',
+                 },
+ 
+-                {
+-                   'name' => '--fullpath issues/822 (github issue #822 T4)',
+-                   'cd'   => '../tests/inputs',
+-                   'args' => '--vcs git --fullpath --not-match-f "b/c.csv" issues/822',
+-                   'ref'  => '../tests/outputs/issues/822/T4.yaml',
+-                },
++                #{
++                #   'name' => '--fullpath issues/822 (github issue #822 T4)',
++                #   'cd'   => '../tests/inputs',
++                #   'args' => '--vcs git --fullpath --not-match-f "b/c.csv" issues/822',
++                #   'ref'  => '../tests/outputs/issues/822/T4.yaml',
++                #},
+ 
+                 {
+                    'name' => '--fullpath issues/822 (github issue #822 T5)',
+@@ -830,12 +830,12 @@
+                    'ref'  => '../tests/outputs/issues/822/T5.yaml',
+                 },
+ 
+-                {
+-                   'name' => '--fullpath issues/822 (github issue #822 T6)',
+-                   'cd'   => '../tests/inputs',
+-                   'args' => '--vcs git --fullpath --not-match-d "^b" issues/822',
+-                   'ref'  => '../tests/outputs/issues/822/T6.yaml',
+-                },
++                #{
++                #   'name' => '--fullpath issues/822 (github issue #822 T6)',
++                #   'cd'   => '../tests/inputs',
++                #   'args' => '--vcs git --fullpath --not-match-d "^b" issues/822',
++                #   'ref'  => '../tests/outputs/issues/822/T6.yaml',
++                #},
+ 
+                 {
+                    'name' => '--fullpath issues/822 (github issue #822 T7)',
+@@ -844,12 +844,12 @@
+                    'ref'  => '../tests/outputs/issues/822/T7.yaml',
+                 },
+ 
+-                {
+-                   'name' => '--fullpath issues/822 (github issue #822 T8)',
+-                   'cd'   => '../tests/inputs',
+-                   'args' => '--vcs git --fullpath --not-match-d "a/b" issues/822',
+-                   'ref'  => '../tests/outputs/issues/822/T8.yaml',
+-                },
++                #{
++                #   'name' => '--fullpath issues/822 (github issue #822 T8)',
++                #   'cd'   => '../tests/inputs',
++                #   'args' => '--vcs git --fullpath --not-match-d "a/b" issues/822',
++                #   'ref'  => '../tests/outputs/issues/822/T8.yaml',
++                #},
+ 
+                 {
+                    'name' => '--not-match-d with trailing slash (github issue #833)',
 --- a/Unix/t/02_git.t
 +++ b/Unix/t/02_git.t
-@@ -94,7 +94,7 @@
+@@ -109,7 +109,7 @@
      print "Directory 'cloc_submodule_test' is not found; git tests skipped.\n";
      print "To enable the tests, create the directory with\n";
      print "    git clone https://github.com/AlDanial/cloc_submodule_test.git\n";
